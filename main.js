@@ -1,22 +1,21 @@
 const express = require('express');
-const app = express();
-const port = 3000;
-
 require('dotenv').config();
-
 const mysql = require('mysql2/promise');
 
 const db = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
-app.get('/', async(req, res) => {
-    const query = 'SELECT * FROM Topics';
+const app = express();
+const port = 3000;
+
+app.get('/', async (req, res) => {
+    const query = 'SELECT * FROM Topics;';
     const result = await db.query(query);
-    console.log(result);
+    console.log(result[0]);
 
     const template = `
     <!DOCTYPE html>
@@ -33,7 +32,7 @@ app.get('/', async(req, res) => {
             <li>CSS</li>
             <li>JavaScript</li>
         </ol>
-        <a href="/topic/create">Create</a>
+        <a href="/post/create">create</a>
     </body>
     </html>
     `
