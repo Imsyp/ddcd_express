@@ -1,0 +1,16 @@
+.input-text,
+.input-textarea {
+    display: block;
+    margin: 1rem;
+}
+
+.comment-div {
+    margin: 1rem;
+    padding: 1rem 3rem;
+    border: 2px solid gray;
+    border-radius: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}

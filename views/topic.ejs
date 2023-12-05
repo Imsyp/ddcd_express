@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/css/input.css">
+
+<h1><%= topic.title %></h1>
+<p><%= topic.content %></p>
+
+<form action="/topic/delete/<%= topic.topic_id %>" method="post">
+    <button>Delete</button>
+    <a href="/topic/update/<%= topic.topic_id %>">Update</a>
+</form>
+
+<div class="comment-container">
+    <% for(let comment of comments) { %>
+        <div id="<%= comment.comment_id %>" class="comment-div">
+            <div>
+                    <p><b><%= comment.username %></b></p>
+                    <p><%= comment.content %></p>
+            </div>
+            <button onclick="deleteComment('<%= comment.comment_id %>')">Delete</button>
+        </div>
+    <% } %>
+</div>
+
+<input type="text" name="username" id="comment-username" class="input-text" placeholder="username...">
+<textarea name="content" id="comment-content" class="input-textarea" cols="30" rows="3" placeholder="content..."></textarea>
+<button onclick="onCreateComment('<%= topic.topic_id %>')">Submit</button>
+
+<script src="/js/comment.js"></script>

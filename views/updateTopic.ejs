@@ -1,0 +1,7 @@
+<link rel="stylesheet" href="/css/input.css">
+
+<form action="/topic/update/<%= topic.topic_id %>" method="post">
+    <input type="text" name="title" class="input-text" placeholder="title.." value="<%= topic.title %>">
+    <textarea name="content" id="" class="input-textarea" cols="30" rows="10" placeholder="content.."><%= topic.content %></textarea>
+    <button>Submit</button>
+</form>
