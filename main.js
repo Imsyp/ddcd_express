@@ -17,6 +17,9 @@ app.set('layout extractStyles', true);
 app.set("layout extractScripts", true);
 app.use(express.static('public'));  
 
+const cors = require('cors');
+app.use(cors());
+
 const homeController = require('./controllers/homeController.js');
 
 app.get('/', homeController.getTopics);
@@ -25,7 +28,7 @@ app.get('/', homeController.getTopics);
 const topicRouter = require('./routers/topicRouter.js');
 const commentRouter = require('./routers/commentRouter.js');
 app.use('/topic', topicRouter); 
-app.use('/comment', commentRouter); //'/comment' 형태로 받는 건 전부 commentRouter가 처리
+app.use('/comment', commentRouter); 
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
